@@ -1,4 +1,4 @@
-import type { Transition, Variants } from "motion/react";
+import type { Transition } from "motion/react";
 
 export const transitionSettings: Transition = {
     duration: 0.3,

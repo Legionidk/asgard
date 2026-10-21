@@ -8,6 +8,7 @@ import Category from "../components/Category";
 import SkeletonCategory from "../components/skeletonCategory/SkeletonCategory";
 import WeaponModal from "../components/modals/weapon";
 
+import AdaptiveModal from "@/components/adaptiveModal/modal";
 import ModalWrapper from "@/components/modals/wrapper";
 import Input from "../components/Input/Input";
 
@@ -43,10 +44,11 @@ export default function WeaponsPage() {
 
     return (
         <>
-            <AnimatePresence initial={false}>
+            <AnimatePresence>
                 {weaponModal && (
-                    <ModalWrapper
-                        closeFunc={() => {
+                    <AdaptiveModal
+                        additionalClasses="pt-[100px]"
+                        onClose={() => {
                             setWeaponModal(null);
                         }}
                     >
@@ -56,7 +58,7 @@ export default function WeaponsPage() {
                                 setWeaponModal(null);
                             }}
                         />
-                    </ModalWrapper>
+                    </AdaptiveModal>
                 )}
             </AnimatePresence>
 

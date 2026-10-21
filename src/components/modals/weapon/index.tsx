@@ -18,7 +18,7 @@ export default function WeaponModal({
 }: WeaponModalProps) {
     return (
         <div
-            className="flex flex-col w-dvw h-full max-w-[900px]"
+            className="flex flex-col max-w-[900px] size-full"
             id="weapon-modal"
         >
             <ModalTitle
