@@ -6,7 +6,7 @@ import Main from "../components/Main";
 import Footer from "../components/footer/Footer";
 import Category from "../components/Category";
 import SkeletonCategory from "../components/skeletonCategory/SkeletonCategory";
-import WeaponModal from "../components/modals/weapon";
+import WeaponModal from "@/components/modals/weapon";
 
 import AdaptiveModal from "@/components/adaptiveModal/modal";
 import ModalWrapper from "@/components/modals/wrapper";
