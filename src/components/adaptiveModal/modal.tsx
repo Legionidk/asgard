@@ -54,7 +54,7 @@ export default function AdaptiveModal({
             <motion.div
                 {...opacityAnimation}
                 id="modal-background"
-                className="z-15 fixed top-0 size-full bg-black/50 backdrop-blur-xs"
+                className="z-15 fixed top-0 size-full bg-black/25 backdrop-blur-xs"
             />
         </>,
         document.getElementById("modal-root")!,
