@@ -1,9 +1,9 @@
-interface BlockInfoProps {
+interface ModalBlockInfoProps {
     name: string;
-    value: string;
+    value: string | number;
 }
 
-export default function BlockInfo({ name, value }: BlockInfoProps) {
+export default function ModalBlockInfo({ name, value }: ModalBlockInfoProps) {
     return (
         <div className="w-full flex justify-between" id="stat-info">
             <span className="text-[#B8B8B8] font-medium uppercase tracking-widest">
