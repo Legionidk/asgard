@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Loader from "@/components/Loader";
 
-interface ImageProps {
+interface ImageContainerProps {
     alt: string;
     url: string;
 }
 
-export default function Image({ alt, url }: ImageProps) {
+export default function ImageContainer({ alt, url }: ImageContainerProps) {
     const [isLoaded, setLoaded] = useState(false);
 
     return (
@@ -15,7 +15,7 @@ export default function Image({ alt, url }: ImageProps) {
             id="image-container"
         >
             <img
-                className="object-contain max-h-[100px]"
+                className="object-contain h-[140px]"
                 src={url}
                 alt={`${alt} image`}
                 hidden={!isLoaded}

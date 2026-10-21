@@ -1,51 +1,55 @@
-import ModalTitle from "../Title";
-import ModalBlock from "../Block";
-import BlockInfo from "../BlockInfo";
-import DamageTable from "./DamageTable";
-import ImagesWrapper from "./imagesWrapper";
+import ModalTitle from "../modal-title";
+import ImagesWrapper from "./images-wrapper";
+import ImageContainer from "./image-container";
+import ModalBlock from "../modal-block";
+import ModalBlockInfo from "../modal-block-info";
+
+import ScrollContainer from "./scroll-container";
+import InfoWrapper from "./info-wrapper";
+import DamageTable from "./damage-table";
 
 import CreditsIcon from "@/assets/creditsIcon.webp";
 import { WeaponModalData } from "@/types/weaponModal";
 
-interface WeaponModalProps {
+const modalClasses =
+    "flex flex-col size-full bg-[#211E1F] overflow-hidden rounded-t-[16px] md:h-fit md:mx-[20px] xl:w-[1160px]";
+
+type WeaponModalProps = {
     modalData: WeaponModalData;
     closeFunc: () => void;
-}
+};
 
 export default function WeaponModal({
     modalData,
     closeFunc,
 }: WeaponModalProps) {
     return (
-        <div
-            className="flex flex-col max-w-[900px] size-full"
-            id="weapon-modal"
-        >
+        <div className={modalClasses}>
             <ModalTitle
                 title={modalData.name}
                 subTitle={modalData.category}
                 closeFunc={closeFunc}
             />
+            <ScrollContainer>
+                <ImagesWrapper>
+                    {modalData.images.map((image) => (
+                        <ImageContainer
+                            key={image.url}
+                            alt={image.name}
+                            url={image.url}
+                        />
+                    ))}
+                </ImagesWrapper>
 
-            <div
-                className="flex flex-col overflow-auto h-full md:flex-row md:h-[600px] md:overflow-hidden"
-                id="scroll-container"
-            >
-                <ImagesWrapper data={modalData.images} />
-
-                <div
-                    className="flex flex-col gap-[10px] p-[8px] bg-[#211E1F] w-full md:max-w-[400px] md:h-full md:overflow-y-auto"
-                    id="info-wrapper"
-                >
-                    <ModalBlock title={modalData.cost} iconUrl={CreditsIcon} />
+                <InfoWrapper>
+                    <ModalBlock iconUrl={CreditsIcon} title={modalData.cost} />
 
                     {modalData.generalData && (
                         <ModalBlock title="General">
                             {modalData.generalData.map((data) => (
-                                <BlockInfo
-                                    key={`${data.name}:${data.value}`}
+                                <ModalBlockInfo
                                     name={data.name}
-                                    value={`${data.value}`}
+                                    value={data.value}
                                 />
                             ))}
                         </ModalBlock>
@@ -54,10 +58,9 @@ export default function WeaponModal({
                     {modalData.primaryFireData && (
                         <ModalBlock title="Primary fire">
                             {modalData.primaryFireData.map((data) => (
-                                <BlockInfo
-                                    key={`${data.name}:${data.value}`}
+                                <ModalBlockInfo
                                     name={data.name}
-                                    value={`${data.value}`}
+                                    value={data.value}
                                 />
                             ))}
                         </ModalBlock>
@@ -65,13 +68,12 @@ export default function WeaponModal({
 
                     {modalData.altFireData && (
                         <ModalBlock
-                            title={`Alternative fire (${modalData.altFireData.type})`}
+                            title={`Alternative fire - ${modalData.altFireData.type}`}
                         >
                             {modalData.altFireData.data.map((data) => (
-                                <BlockInfo
-                                    key={`${data.name}:${data.value}`}
+                                <ModalBlockInfo
                                     name={data.name}
-                                    value={`${data.value}`}
+                                    value={data.value}
                                 />
                             ))}
                         </ModalBlock>
@@ -82,8 +84,8 @@ export default function WeaponModal({
                             <DamageTable data={modalData.damageData} />
                         </ModalBlock>
                     )}
-                </div>
-            </div>
+                </InfoWrapper>
+            </ScrollContainer>
         </div>
     );
 }

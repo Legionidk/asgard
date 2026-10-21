@@ -1,10 +1,10 @@
 import { WeaponDamageData } from "@/types/weaponModal";
+import DamageTableTd from "./damage-table-td";
 
 interface DamageTableProps {
     data: WeaponDamageData[];
 }
 
-// TODO: refac
 export default function DamageTable({ data }: DamageTableProps) {
     return (
         <table id="damage-table">
@@ -27,47 +27,35 @@ export default function DamageTable({ data }: DamageTableProps) {
 
             <tbody className="text-[18px]">
                 <tr>
-                    <td className="text-[#B8B8B8] text-center font-light p-[8px_16px]">
-                        Head
-                    </td>
+                    <DamageTableTd value="Head" mode="light" />
 
                     {data.map((damage) => (
-                        <td
-                            className="text-center p-[8px_16px]"
-                            key={damage.headDamage}
-                        >
-                            {damage.headDamage}
-                        </td>
+                        <DamageTableTd
+                            key={damage.headDamage + damage.rangeStart}
+                            value={damage.headDamage}
+                        />
                     ))}
                 </tr>
 
                 <tr>
-                    <td className="text-[#B8B8B8] text-center font-light p-[8px_16px]">
-                        Body
-                    </td>
+                    <DamageTableTd value="Body" mode="light" />
 
                     {data.map((damage) => (
-                        <td
-                            className="text-center p-[8px_16px]"
-                            key={damage.bodyDamage}
-                        >
-                            {damage.bodyDamage}
-                        </td>
+                        <DamageTableTd
+                            key={damage.headDamage + damage.rangeStart}
+                            value={damage.headDamage}
+                        />
                     ))}
                 </tr>
 
                 <tr>
-                    <td className="text-[#B8B8B8] text-center font-light p-[8px_16px]">
-                        Legs
-                    </td>
+                    <DamageTableTd value="Legs" mode="light" />
 
                     {data.map((damage) => (
-                        <td
-                            className="text-center p-[8px_16px]"
-                            key={damage.legsDamage}
-                        >
-                            {damage.legsDamage}
-                        </td>
+                        <DamageTableTd
+                            key={damage.headDamage + damage.rangeStart}
+                            value={damage.headDamage}
+                        />
                     ))}
                 </tr>
             </tbody>
