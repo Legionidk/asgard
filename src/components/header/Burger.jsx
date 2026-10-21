@@ -21,7 +21,7 @@ export default function Burger({ buttonsData = [] }) {
             animate={{ x: 0, opacity: 100 }}
             exit={{ x: 10, opacity: 0 }}
             transition={{ duration: 0.15, ease: "easeInOut" }}
-            className="z-30 fixed top-[80px] w-full min-h-dvh flex flex-col items-center bg-[#111111]"
+            className="fixed top-[80px] w-full min-h-dvh flex flex-col items-center bg-[#111111]"
             key="burger-menu"
         >
             <div

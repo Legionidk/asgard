@@ -3,7 +3,7 @@ import SkeletonCard from "./SkeletonCard";
 export default function SkeletonCategory() {
     return (
         <div
-            className="z-10 w-full flex flex-col gap-[10px]"
+            className="w-full flex flex-col gap-[10px]"
             key="skeleton-category"
         >
             <div

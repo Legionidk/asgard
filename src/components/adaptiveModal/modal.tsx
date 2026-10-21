@@ -20,7 +20,7 @@ export default function AdaptiveModal({
     additionalClasses,
 }: AdaptiveModalProps) {
     const contentWrapperStyles = clsx(
-        "z-30 fixed",
+        "z-20 fixed",
         "flex justify-center top-0 size-full",
         centered ? "items-center" : "items-end",
         additionalClasses,
@@ -40,19 +40,22 @@ export default function AdaptiveModal({
                 {...yAnimation}
                 id="content-wrapper"
                 className={contentWrapperStyles}
+                onClick={(e) => {
+                    if ((e.target as HTMLElement).id !== "content-wrapper") {
+                        return;
+                    }
+
+                    onClose();
+                }}
             >
                 {children}
-                
-                <motion.div
-                    {...opacityAnimation}
-                    id="modal-background"
-                    className="fixed top-0 size-full bg-black/50 backdrop-blur-xs"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        onClose();
-                    }}
-                />
             </motion.div>
+
+            <motion.div
+                {...opacityAnimation}
+                id="modal-background"
+                className="z-15 fixed top-0 size-full bg-black/50 backdrop-blur-xs"
+            />
         </>,
         document.getElementById("modal-root")!,
     );

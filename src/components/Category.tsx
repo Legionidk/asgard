@@ -26,7 +26,7 @@ export default function Category<TModalData>({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={transitionSettings}
-            className="z-10 w-full flex flex-col gap-[10px]"
+            className="w-full flex flex-col gap-[10px]"
             id="category"
         >
             <p

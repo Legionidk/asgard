@@ -21,7 +21,7 @@ export default function Header() {
                 {isBurgerOpened && <Burger buttonsData={buttons} />}
             </AnimatePresence>
 
-            <header className="z-20 sticky top-0 w-full h-[80px] flex justify-between items-center gap-[30px] px-[20px] bg-[#111111] border-b-1 border-[#323232] lg:justify-start">
+            <header className="z-10 sticky top-0 w-full h-[80px] flex justify-between items-center gap-[30px] px-[20px] bg-[#111111] border-b-1 border-[#323232] lg:justify-start">
                 <img src={logo} alt="Asgard logo" className="h-[30px]" />
 
                 <div className="hidden gap-[5px] lg:flex" id="buttons-wrapper">

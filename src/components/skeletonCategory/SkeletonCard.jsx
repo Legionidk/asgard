@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export default function SkeletonCard() {
     return (
         <div
-            className="z-10 w-full rounded-[8px] overflow-hidden"
+            className="w-full rounded-[8px] overflow-hidden"
             key="skeleton-card"
         >
             <div
