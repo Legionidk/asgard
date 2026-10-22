@@ -1,18 +1,18 @@
+import ScrollContainer from "./scroll-container";
+import InfoWrapper from "./info-wrapper";
+
 import ModalTitle from "../modal-title";
 import ImagesWrapper from "./images-wrapper";
 import ImageContainer from "./image-container";
 import ModalBlock from "../modal-block";
 import ModalBlockInfo from "../modal-block-info";
-
-import ScrollContainer from "./scroll-container";
-import InfoWrapper from "./info-wrapper";
 import DamageTable from "./damage-table";
 
 import CreditsIcon from "@/assets/creditsIcon.webp";
 import { WeaponModalData } from "@/types/weaponModal";
 
 const modalClasses =
-    "flex flex-col size-full bg-[#211E1F] overflow-hidden rounded-t-[16px] md:h-fit md:mx-[20px] xl:w-[1160px]";
+    "flex flex-col h-full bg-[#211E1F] overflow-hidden rounded-t-[16px] md:h-fit md:max-h-full md:mx-[20px] xl:w-[1160px]";
 
 type WeaponModalProps = {
     modalData: WeaponModalData;
