@@ -15,7 +15,7 @@ export default function ImageWrapper({
     const [isLoaded, setLoaded] = useState(false);
 
     const imageWrapperStyle = clsx(
-        "flex items-center justify-center bg-[#292727]",
+        "flex items-center justify-center bg-[#292727] overflow-hidden",
         agentMode ? "h-[175px] pt-[25px]" : "h-[135px] p-[25px_25px]",
         !isLoaded && "animate-pulse",
     );
