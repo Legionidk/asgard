@@ -1,5 +1,5 @@
 const infoWrapperClasses =
-    "flex flex-col p-[8px] gap-[8px] md:min-w-[400px] md:overflow-auto";
+    "flex flex-col p-[8px] gap-[8px] md:min-w-[50%] md:overflow-auto";
 
 type InfoWrapperProps = {
     children: React.ReactNode;
