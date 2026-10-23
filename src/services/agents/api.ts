@@ -11,5 +11,11 @@ export default async function fetchAgents(): Promise<AgentApiType[]> {
     }
 
     const agents = await response.json();
-    return v.parse(v.array(AgentSchema), agents.data);
+    return v.parse(
+        v.array(AgentSchema),
+        agents.data.filter(
+            (agent: { isPlayableCharacter: boolean }) =>
+                agent.isPlayableCharacter,
+        ),
+    );
 }
