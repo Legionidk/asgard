@@ -1,5 +1,5 @@
 const imageWrapperStyle =
-    "flex flex-col gap-[50px] justify-between w-full p-[50px_25px] bg-[#292727] overflow-auto";
+    "flex flex-col gap-[50px] justify-between w-full p-[50px_25px] bg-[#292727] md:overflow-auto";
 
 type ImagesWrapperProps = {
     children: React.ReactNode;
