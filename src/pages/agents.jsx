@@ -4,12 +4,12 @@ import { useState, useEffect, useMemo } from "react";
 import Header from "../components/header/Header";
 import Main from "../components/Main";
 import Footer from "../components/footer/Footer";
-import Category from "../components/category/category";
+import { Category } from "@/components/category";
 import SkeletonCategory from "../components/skeletonCategory/SkeletonCategory";
 import AgentModal from "../components/modals/agent/AgentModal";
 
 import ModalWrapper from "@/components/modals/wrapper";
-import Input from "../components/Input/Input";
+import { Input } from "@/components/Input";
 
 import getAgents from "../services/agents";
 

@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Header from "@/components/header/Header";
 import Main from "@/components/Main";
 import Footer from "@/components/footer/Footer";
-import Input from "@/components/Input/Input";
+import { Input } from "@/components/Input";
 import { Category } from "@/components/category";
 import { Card } from "@/components/card";
 import SkeletonCategory from "@/components/skeletonCategory/SkeletonCategory";
