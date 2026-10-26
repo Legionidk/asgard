@@ -7,40 +7,23 @@ import Footer from "../components/footer/Footer";
 import Category from "../components/Category";
 import SkeletonCategory from "../components/skeletonCategory/SkeletonCategory";
 import WeaponModal from "@/components/modals/weapon";
+import ErrorPlaceholder from "@/components/error-placeholder";
 
 import AdaptiveModal from "@/components/adaptiveModal/modal";
 import ModalWrapper from "@/components/modals/wrapper";
 import Input from "../components/Input/Input";
 
+import useWeaponCategories from "@/hooks/useWeaponCategories";
+import useWeapons from "@/hooks/useWeapons";
 import getWeapons from "../services/weapons";
 
 export default function WeaponsPage() {
-    const [isLoaded, setLoaded] = useState(false);
+    const weaponsQuery = useWeapons();
+    const categoriesQuery = useWeaponCategories();
+
     const [weaponsData, setWeaponsData] = useState([]);
     const [weaponModal, setWeaponModal] = useState(null);
     const [search, setSearch] = useState("");
-
-    useEffect(() => {
-        getWeapons().then((data) => {
-            setWeaponsData(data);
-            setLoaded(true);
-        });
-    }, []);
-
-    const filteredWeaponsData = useMemo(() => {
-        if (!search.trim()) {
-            return weaponsData;
-        }
-
-        return weaponsData
-            .map((category) => ({
-                ...category,
-                cardsData: category.cardsData.filter((weapon) =>
-                    weapon.name.toLowerCase().includes(search.toLowerCase()),
-                ),
-            }))
-            .filter((category) => category.cardsData.length > 0);
-    }, [weaponsData, search]);
 
     return (
         <>
@@ -65,25 +48,28 @@ export default function WeaponsPage() {
             <Header />
 
             <Main>
-                <Input
-                    placeholder="Search in weapons"
-                    onChange={(value) => {
-                        setSearch(value);
-                    }}
-                />
+                {(weaponsQuery.isPending || categoriesQuery.isPending) && (
+                    <SkeletonCategory />
+                )}
+
+                {weaponsQuery.isError && (
+                    <ErrorPlaceholder message={weaponsQuery.error.message} />
+                )}
+
+                {categoriesQuery.isError && (
+                    <ErrorPlaceholder message={categoriesQuery.error.message} />
+                )}
 
                 <AnimatePresence>
-                    {isLoaded ? (
-                        filteredWeaponsData.map((category) => (
-                            <Category
-                                name={category.name}
-                                cardsData={category.cardsData}
-                                modalFunc={setWeaponModal}
-                                key={category.id}
+                    {weaponsQuery.isSuccess && categoriesQuery.isSuccess && (
+                        <>
+                            <Input
+                                placeholder="Search in weapons"
+                                onChange={(value) => {
+                                    setSearch(value);
+                                }}
                             />
-                        ))
-                    ) : (
-                        <SkeletonCategory />
+                        </>
                     )}
                 </AnimatePresence>
             </Main>

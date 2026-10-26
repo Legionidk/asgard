@@ -10,7 +10,7 @@ type AdaptiveModalProps = {
     children: React.ReactNode;
     onClose: () => void;
     centered?: boolean;
-    additionalClasses?: number;
+    additionalClasses?: string;
 };
 
 export default function AdaptiveModal({
