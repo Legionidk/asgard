@@ -1,17 +1,17 @@
 import clsx from "clsx";
 import { useState } from "react";
 
-interface ImageWrapperProps {
+interface CardImageWrapperProps {
     alt: string;
     imageUrl: string;
     agentMode?: boolean;
 }
 
-export default function ImageWrapper({
+export function CardImageWrapper({
     alt,
     imageUrl,
     agentMode = false,
-}: ImageWrapperProps) {
+}: CardImageWrapperProps) {
     const [isLoaded, setLoaded] = useState(false);
 
     const imageWrapperStyle = clsx(
