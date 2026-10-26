@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
+import { useState, useId, useEffect } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useState, useId } from "react";
 
 import { transitionSettings } from "@/animations";
 import { transition, input, activeLabel, inactiveLabel } from "./styles";
@@ -13,24 +13,37 @@ import {
 interface InputProps {
     placeholder?: string;
     onChange?: (value: string) => void;
+    debounce?: boolean;
 }
 
-export default function Input({
+export function Input({
     placeholder = "Placeholder",
     onChange = () => {},
+    debounce = true,
 }: InputProps) {
     const inputId = useId();
     const [value, setValue] = useState("");
     const [focus, setFocus] = useState(false);
 
+    useEffect(() => {
+        if (!debounce) {
+            onChange(value);
+            return;
+        }
+
+        const timeout = setTimeout(() => {
+            onChange(value);
+        }, 500);
+
+        return () => clearTimeout(timeout);
+    }, [value]);
+
     const changeHandler = (value: string) => {
         setValue(value);
-        onChange(value);
     };
 
     const clearHandler = () => {
         setValue("");
-        onChange("");
     };
 
     return (
